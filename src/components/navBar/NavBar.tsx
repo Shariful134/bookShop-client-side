@@ -1,6 +1,25 @@
 import { NavLink } from "react-router-dom";
 import logoImage from "../../assets/image/logo.png";
+import { useAppDispath, useAppSelector } from "../../redux/hooks";
+import { logout, useCurrentToken } from "../../redux/auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
+import { TUser } from "../../types/type";
+import { toast } from "sonner";
 const NavBar = () => {
+  const dispatch = useAppDispath();
+
+  const token = useAppSelector(useCurrentToken);
+  let user;
+  if (token) {
+    user = verifyToken(token) as TUser;
+  }
+  console.log(user);
+  const admin = user?.role;
+
+  const handlLogOut = () => {
+    dispatch(logout());
+    toast.success("LogOut SuccessFully!");
+  };
   return (
     <div className="navbar bg-[#011529] shadow-sm px-10 font-serif fixed z-1 ">
       <div className="flex-1">
@@ -102,17 +121,30 @@ const NavBar = () => {
             <li>
               <a>Settings</a>
             </li>
-            <li>
-              <a>Logout</a>
-            </li>
-
-            <li>
-              <a href="/login">Login</a>
-            </li>
-
-            <li>
-              <a href="/register">Registration</a>
-            </li>
+            {user ? (
+              <>
+                <li>
+                  <a>Order</a>
+                </li>
+                {admin === "admin" && (
+                  <li>
+                    <a>User</a>
+                  </li>
+                )}
+                <li>
+                  <button onClick={handlLogOut}>LogOut</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a href="/login">Login</a>
+                </li>
+                <li>
+                  <a href="/register">Registration</a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

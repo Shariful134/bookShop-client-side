@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import {
   useGetAllBooksQuery,
   useGetSingleBookQuery,
@@ -6,8 +6,10 @@ import {
 import { FaBook } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
 import { TBook } from "../../types/type";
+import { useEffect } from "react";
 
 const Details = () => {
+  const location = useLocation();
   const { id } = useParams();
   const { data: Book } = useGetSingleBookQuery(id);
   const { data: allBooks } = useGetAllBooksQuery(undefined);
@@ -17,6 +19,10 @@ const Details = () => {
   const sameCategory = allBooks?.data?.filter(
     (item: TBook) => item?.category === book?.category
   );
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
 
   return (
     <div className="pt-16 px-10">

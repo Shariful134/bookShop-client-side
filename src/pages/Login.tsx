@@ -72,13 +72,13 @@ const Login = () => {
                 >
                   Login
                 </button>
-                <span>
-                  Don't Have An Account? Please{" "}
-                  <Link to="/register" className="text-red-500 underline">
-                    Resitration
-                  </Link>
-                </span>
               </form>
+              <span>
+                Don't Have An Account? Please{" "}
+                <Link to="/register" className="text-red-500 underline">
+                  Resitration
+                </Link>
+              </span>
             </fieldset>
           </div>
         </div>
