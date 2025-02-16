@@ -1,5 +1,6 @@
 import { FaBook } from "react-icons/fa";
 import bannerImg from "../../assets/image/caroselImg-1.png";
+import Books from "../../components/books/books";
 const Home = () => {
   return (
     <div className="pt-16">
@@ -16,8 +17,8 @@ const Home = () => {
           </button>
         </div>
       </div>
-      ;{/* ===============Best selling  sections =================== */}
-      <section className="my-8 px-10">
+      {/* ===============Best selling  sections =================== */}
+      <section className="mt-8 px-10">
         <div className=" text-center font-serif">
           <h2 className="text-3xl mb-2 text-cyan-500">
             -- <FaBook className="inline" /> Best Selling Books{" "}
@@ -31,7 +32,7 @@ const Home = () => {
           </p>
         </div>
         <div className="flex justify-center flex-wrap gap-4 my-2">
-          <div className="card bg-base-100 w-75 shadow-lg border-1 border-slate-200 shadow-lg">
+          <div className="card bg-base-100 w-75 border-1 border-slate-200 shadow-lg">
             <figure className="px-5 pt-5">
               <img
                 src="https://i.ibb.co.com/xScMg0jC/DALL-E-2025-02-16-00-51-24-A-high-quality-programming-book-with-a-visually-appealing-and-modern-fron.webp"
@@ -39,7 +40,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-serif">
               <h2 className="card-title">How to Learn Programming</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -57,7 +58,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-serif">
               <h2 className="card-title">Dark Psychology Secrets</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -74,7 +75,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-serif">
               <h2 className="card-title">Mastering as Programmer</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -91,7 +92,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-serif">
               <h2 className="card-title">How to Improove mine</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -103,18 +104,8 @@ const Home = () => {
         </div>
       </section>
       {/* ==================Books Section==================== */}
-      <section className="my-8 px-10">
-        <div className=" text-center font-serif">
-          <h2 className="text-3xl mb-2 text-cyan-500">
-            -- <FaBook className="inline" /> Our Books{" "}
-            <FaBook className="inline" /> --{" "}
-          </h2>
-          <p className="max-w-3/6 mx-auto">
-            {" "}
-            Explore our most popular books, loved by readers worldwide. From
-            fiction to self-help, find your next favorite read today!
-          </p>
-        </div>
+      <section>
+        <Books></Books>
       </section>
     </div>
   );
