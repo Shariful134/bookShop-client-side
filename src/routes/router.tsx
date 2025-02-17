@@ -5,7 +5,7 @@ import Home from "../pages/home/Home";
 import Details from "../pages/books/Details";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
-import { Users } from "@/pages/users/Users";
+import Users from "@/pages/users/Users";
 
 const router = createBrowserRouter([
   {

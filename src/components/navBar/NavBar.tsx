@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logoImage from "../../assets/image/logo.png";
 import { useAppDispath, useAppSelector } from "../../redux/hooks";
 import { logout, useCurrentToken } from "../../redux/auth/authSlice";
@@ -7,18 +7,21 @@ import { TUser } from "../../types/type";
 import { toast } from "sonner";
 const NavBar = () => {
   const dispatch = useAppDispath();
+  const navigate = useNavigate();
 
   const token = useAppSelector(useCurrentToken);
   let user;
   if (token) {
     user = verifyToken(token) as TUser;
   }
-  console.log(user);
+  // console.log(user);
   const admin = user?.role;
 
   const handlLogOut = () => {
     dispatch(logout());
     toast.success("LogOut SuccessFully!");
+    navigate("/login");
+    window.scrollTo(0, 0);
   };
   return (
     <div className="navbar bg-[#011529] shadow-sm px-10 font-serif fixed z-1 ">

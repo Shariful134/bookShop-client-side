@@ -5,44 +5,54 @@ import { TBook } from "../../types/type";
 // import { useAppSelector } from "../../redux/hooks";
 // import { useCurrentToken } from "../../redux/auth/authSlice";
 // import { verifyToken } from "../../utils/verifyToken";
-import { FaArrowRight, FaBook } from "react-icons/fa";
+
 import { IoMdCart } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { FaBook } from "react-icons/fa";
+import { Input } from "../ui/input";
+import CategorySelect from "../select/CategorySelect";
+import Authorselect from "../select/AuthorSelect";
+import PriceSelect from "../select/PriceSelect";
 
 const Books = () => {
-  // const token = useAppSelector(useCurrentToken);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [categoriesSelect, setCategoriesSelect] = useState<string[]>([]);
+  const [authorSelect, setAuthorSelect] = useState<string[]>([]);
+  const [pricesSelect, setPricesSelect] = useState<[number, number] | null>(
+    null
+  );
+  // const [inStockSelect, setInStockSelect] = useState<string[]>([]);
 
-  // let user;
-  // if (token) {
-  //   user = verifyToken(token) as TUser;
-  // }
-  // const admin = user?.role;
-
-  // const [bookId, setbookId] = useState<string | null>(null);
-
-  // console.log(bookId);
-  const [showCount, setShowCount] = useState(8);
   const { data: booksData } = useGetAllBooksQuery(undefined);
+  const allBooks = booksData?.data || [];
 
-  const booksDatas = booksData?.data?.map((book: TBook) => ({
-    _id: book._id,
-    title: book.title,
-    author: book.author,
-    price: book.price,
-    category: book.category,
-    description: book.description,
-    quantity: book.quantity,
-    inStock: book.inStock,
-    publicationDate: book.publicationDate,
-    publisher: book.publisher,
-    imageURL: book.imageURL,
-  }));
-  const allBooks = booksDatas || [];
-  console.log(allBooks);
+  const categories = [
+    ...new Set(allBooks.map((book: TBook) => book.category)),
+  ] as string[];
+
+  const authors = [
+    ...new Set(allBooks.map((book: TBook) => book.author)),
+  ] as string[];
+
+  // search and filtering
+  const allFilteredBooks = allBooks.filter((book: TBook) => {
+    const searchData = book.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const categoriesData =
+      categoriesSelect.length === 0 || categoriesSelect.includes(book.category);
+    const authorData =
+      authorSelect.length === 0 || authorSelect.includes(book.author);
+    const pricesData =
+      pricesSelect === null ||
+      (book.price >= pricesSelect[0] && book.price <= pricesSelect[1]);
+
+    return searchData && categoriesData && authorData && pricesData;
+  });
 
   return (
     <div>
-      <div className=" text-center font-serif pt-8">
+      <div className=" text-center font-serif  px-10 pt-8">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Our Books{" "}
           <FaBook className="inline" /> --{" "}
@@ -53,63 +63,65 @@ const Books = () => {
           fiction to self-help, find your next favorite read today!
         </p>
       </div>
-      <div className="flex justify-center flex-wrap gap-4 my-2">
-        {allBooks?.slice(0, showCount).map((book: TBook) => {
-          const inStock = book.inStock;
-          return (
-            <div
-              key={book?._id}
-              className="card bg-base-100 w-75 relative group   border-1 border-slate-200 shadow-lg"
-            >
-              <figure className="px-5 pt-5">
-                <img src={book.imageURL} alt="Shoes" className="rounded-xl" />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">{book?.title}</h2>
-                <p className="text-cyan-600 font-bold">{book?.price} $</p>
-                {inStock ? (
-                  <p>InStock: Available</p>
-                ) : (
-                  <p>InStock: Unavailable</p>
-                )}
-
-                <Link to={`/book-details/${book._id}`}>
-                  <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                    Details
-                  </button>
-                </Link>
-              </div>
-
-              <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
-                <button className="btn w-full border:bg-cyan-400 bg-cyan-300 border-1 hover:border-cyan-600">
-                  Add To Cart <IoMdCart className="text-xl" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+      <div className="flex wrap justify-between items-center gap-2 px-10">
+        <Input
+          className="w-[50%] "
+          type="search"
+          value={searchTerm}
+          placeholder="Search here"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <CategorySelect
+          categories={categories}
+          setCategoriesSelect={setCategoriesSelect}
+        ></CategorySelect>
+        <Authorselect
+          authors={authors}
+          setAuthorSelect={setAuthorSelect}
+        ></Authorselect>
+        <PriceSelect setPricesSelect={setPricesSelect}></PriceSelect>
       </div>
-      <div className="flex justify-center flex-wrap gap-4 my-2">
-        {showCount < allBooks.length ? (
-          <div className=" text-center mb-2">
-            <button
-              onClick={() => setShowCount((prevsData) => prevsData + 10)}
-              className="btn btn-xs hover:bg-cyan-400 bg-cyan-300 border-1 hover:shadow-2xl hover:border-cyan-800 border-cyan-500 sm:btn-sm md:btn-md mt-2 bg "
-            >
-              Show More <FaArrowRight />
-            </button>
-          </div>
+      <div className="flex justify-center flex-wrap gap-4 px-10 my-2">
+        {allFilteredBooks.length > 0 ? (
+          allFilteredBooks?.map((book: TBook) => {
+            const inStock = book.inStock;
+            return (
+              <div
+                key={book?._id}
+                className="card bg-base-100 w-75 relative group   border-1 border-slate-200 shadow-lg"
+              >
+                <figure className="px-5 pt-5">
+                  <img src={book.imageURL} alt="Shoes" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">{book?.title}</h2>
+                  <p className="text-cyan-600 font-bold">{book?.price} $</p>
+                  {inStock ? (
+                    <p>InStock: Available</p>
+                  ) : (
+                    <p>InStock: Unavailable</p>
+                  )}
+
+                  <Link to={`/book-details/${book._id}`}>
+                    <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                      Details
+                    </button>
+                  </Link>
+                </div>
+
+                <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
+                  <button className="btn w-full border:bg-cyan-400 bg-cyan-300 border-1 hover:border-cyan-600">
+                    Add To Cart <IoMdCart className="text-xl" />
+                  </button>
+                </div>
+              </div>
+            );
+          })
         ) : (
-          <div className=" text-center mb-2">
-            <button
-              onClick={() => setShowCount((prevsData) => prevsData - 10)}
-              className="btn btn-xs hover:bg-cyan-400 bg-cyan-300 border-1 hover:shadow-2xl hover:border-cyan-800 border-cyan-500 sm:btn-sm md:btn-md mt-2 bg "
-            >
-              Show Less
-            </button>
-          </div>
+          <p className="text-center text-2xl text-cyan-600">No Book Found!</p>
         )}
       </div>
+      <div className="flex justify-center flex-wrap gap-4 my-2"></div>
     </div>
   );
 };
