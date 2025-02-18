@@ -3,7 +3,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -29,12 +28,11 @@ const PriceSelect: React.FC<SelectedProps> = ({ setPricesSelect }) => {
 
   return (
     <Select onValueChange={handleSelect}>
-      <SelectTrigger className="w-[50%]">
+      <SelectTrigger className="w-75">
         <SelectValue placeholder="Select Price Range" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Price</SelectLabel>
           <SelectItem key="All Price" value="All Price">
             Price
           </SelectItem>

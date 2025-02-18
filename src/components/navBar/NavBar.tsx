@@ -5,6 +5,10 @@ import { logout, useCurrentToken } from "../../redux/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
 import { TUser } from "../../types/type";
 import { toast } from "sonner";
+import { IoMdSettings } from "react-icons/io";
+import { FaBookMedical, FaHistory } from "react-icons/fa";
+import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 const NavBar = () => {
   const dispatch = useAppDispath();
   const navigate = useNavigate();
@@ -16,6 +20,7 @@ const NavBar = () => {
   }
   // console.log(user);
   const admin = user?.role;
+  console.log(admin);
 
   const handlLogOut = () => {
     dispatch(logout());
@@ -115,33 +120,52 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
+            <p className="font-bold">My Account</p>
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
+              <a>
+                <CgProfile /> Profile
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <a>
+                <IoMdSettings /> Settings
+              </a>
             </li>
             {user ? (
               <>
                 <li>
-                  <a>Order</a>
+                  <a>
+                    <FaHistory /> Order History
+                  </a>
                 </li>
                 {admin === "admin" && (
-                  <li>
-                    <a href="/users">User</a>
-                  </li>
+                  <>
+                    <li>
+                      <a href="/users">
+                        <FaHistory /> User History
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <FaBookMedical /> Create Book
+                      </a>
+                    </li>
+                  </>
                 )}
                 <li>
-                  <button onClick={handlLogOut}>LogOut</button>
+                  <button onClick={handlLogOut}>
+                    {" "}
+                    <AiOutlineLogout />
+                    LogOut
+                  </button>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <a href="/login">Login</a>
+                  <a href="/login">
+                    <AiOutlineLogin /> Login
+                  </a>
                 </li>
                 <li>
                   <a href="/register">Registration</a>

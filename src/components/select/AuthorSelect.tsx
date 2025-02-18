@@ -3,7 +3,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -26,12 +25,11 @@ const Authorselect: React.FC<SelectedProps> = ({
   };
   return (
     <Select onValueChange={handleSelect}>
-      <SelectTrigger className="w-[50%]">
+      <SelectTrigger className="w-75">
         <SelectValue placeholder="Select a Authors" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Authors</SelectLabel>
           <SelectItem key="All Authors" value="All Authors">
             All Authors
           </SelectItem>

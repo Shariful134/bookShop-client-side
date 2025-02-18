@@ -1,10 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useGetAllBooksQuery } from "../../redux/book/bookApi";
-import { TBook } from "../../types/type";
-// import { useState } from "react";
-// import { useAppSelector } from "../../redux/hooks";
-// import { useCurrentToken } from "../../redux/auth/authSlice";
-// import { verifyToken } from "../../utils/verifyToken";
+import { TBook, TUser } from "../../types/type";
 
 import { IoMdCart } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -13,15 +9,31 @@ import { Input } from "../ui/input";
 import CategorySelect from "../select/CategorySelect";
 import Authorselect from "../select/AuthorSelect";
 import PriceSelect from "../select/PriceSelect";
+import InStockSelect from "../select/InStockSelect";
+import { useAppSelector } from "@/redux/hooks";
+import { useCurrentToken } from "@/redux/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
 
 const Books = () => {
+  const token = useAppSelector(useCurrentToken);
+  let user;
+  if (token) {
+    user = verifyToken(token) as TUser;
+  }
+  // console.log(user);
+  const admin = user?.role;
+
+  const booksRef = useRef<HTMLDivElement | null>(null);
+  const [currentPage, setCurrectPage] = useState(12);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoriesSelect, setCategoriesSelect] = useState<string[]>([]);
   const [authorSelect, setAuthorSelect] = useState<string[]>([]);
   const [pricesSelect, setPricesSelect] = useState<[number, number] | null>(
     null
   );
-  // const [inStockSelect, setInStockSelect] = useState<string[]>([]);
+  const [inStockSelect, setInStockSelect] = useState<
+    "all" | "inStock" | "outOfStock"
+  >("all");
 
   const { data: booksData } = useGetAllBooksQuery(undefined);
   const allBooks = booksData?.data || [];
@@ -35,20 +47,42 @@ const Books = () => {
   ] as string[];
 
   // search and filtering
-  const allFilteredBooks = allBooks.filter((book: TBook) => {
-    const searchData = book.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const categoriesData =
-      categoriesSelect.length === 0 || categoriesSelect.includes(book.category);
-    const authorData =
-      authorSelect.length === 0 || authorSelect.includes(book.author);
-    const pricesData =
-      pricesSelect === null ||
-      (book.price >= pricesSelect[0] && book.price <= pricesSelect[1]);
+  const allFilteredBooks = allBooks
+    ?.slice(0, currentPage)
+    .filter((book: TBook) => {
+      const searchData = book.title
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const categoriesData =
+        categoriesSelect.length === 0 ||
+        categoriesSelect.includes(book.category);
+      const authorData =
+        authorSelect.length === 0 || authorSelect.includes(book.author);
+      const pricesData =
+        pricesSelect === null ||
+        (book.price >= pricesSelect[0] && book.price <= pricesSelect[1]);
 
-    return searchData && categoriesData && authorData && pricesData;
-  });
+      const stockData =
+        inStockSelect === "all" ||
+        (inStockSelect === "inStock" && book.inStock) ||
+        (inStockSelect === "outOfStock" && !book.inStock);
+
+      return (
+        searchData && categoriesData && authorData && pricesData && stockData
+      );
+    });
+
+  const scrollToTop = () => {
+    booksRef.current?.scrollIntoView({ block: "start" });
+  };
+  const handleViewMore = () => {
+    setCurrectPage((value) => value + 12);
+    scrollToTop();
+  };
+  const handleViewLess = () => {
+    setCurrectPage((value) => value - 12);
+    scrollToTop();
+  };
 
   return (
     <div>
@@ -63,9 +97,12 @@ const Books = () => {
           fiction to self-help, find your next favorite read today!
         </p>
       </div>
-      <div className="flex wrap justify-between items-center gap-2 px-10">
+      <div
+        ref={booksRef}
+        className=" mt-5 flex justify-center flex-wrap lg:gap-4 sm:gap-2 md:gap-4 px-10"
+      >
         <Input
-          className="w-[50%] "
+          className="w-75 "
           type="search"
           value={searchTerm}
           placeholder="Search here"
@@ -80,6 +117,7 @@ const Books = () => {
           setAuthorSelect={setAuthorSelect}
         ></Authorselect>
         <PriceSelect setPricesSelect={setPricesSelect}></PriceSelect>
+        <InStockSelect setInStockSelect={setInStockSelect}></InStockSelect>
       </div>
       <div className="flex justify-center flex-wrap gap-4 px-10 my-2">
         {allFilteredBooks.length > 0 ? (
@@ -102,11 +140,26 @@ const Books = () => {
                     <p>InStock: Unavailable</p>
                   )}
 
-                  <Link to={`/book-details/${book._id}`}>
-                    <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                      Details
-                    </button>
-                  </Link>
+                  {admin ? (
+                    <div className="felx flex-wrap gap-5">
+                      <Link to={`/book-details/${book._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Details
+                        </button>
+                      </Link>
+                      <Link to={`/book-details/${book._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Update
+                        </button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link to={`/book-details/${book._id}`}>
+                      <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        Details
+                      </button>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
@@ -121,7 +174,24 @@ const Books = () => {
           <p className="text-center text-2xl text-cyan-600">No Book Found!</p>
         )}
       </div>
-      <div className="flex justify-center flex-wrap gap-4 my-2"></div>
+      <div className="flex justify-center flex-wrap px-10 gap-4 my-2">
+        {currentPage <= allFilteredBooks.length && (
+          <button
+            onClick={handleViewMore}
+            className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800"
+          >
+            View More
+          </button>
+        )}
+        {currentPage > 12 && (
+          <button
+            onClick={handleViewLess}
+            className="btn px-5  bg-cyan-300  hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800"
+          >
+            View Less
+          </button>
+        )}
+      </div>
     </div>
   );
 };

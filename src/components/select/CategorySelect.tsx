@@ -3,7 +3,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -26,12 +25,11 @@ const CategorySelect: React.FC<SelectedProps> = ({
   };
   return (
     <Select onValueChange={handleSelect}>
-      <SelectTrigger className="w-[50%]">
+      <SelectTrigger className="w-75">
         <SelectValue placeholder="Select a Category" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Category</SelectLabel>
           <SelectItem key="All Category" value="All Category">
             All Category
           </SelectItem>
