@@ -139,15 +139,14 @@ const Books = () => {
                   ) : (
                     <p>InStock: Unavailable</p>
                   )}
-
                   {admin ? (
-                    <div className="felx flex-wrap gap-5">
+                    <div className=" flex flex-wrap gap-2">
                       <Link to={`/book-details/${book._id}`}>
                         <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
                           Details
                         </button>
                       </Link>
-                      <Link to={`/book-details/${book._id}`}>
+                      <Link to={`/book-update/${book._id}`}>
                         <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
                           Update
                         </button>

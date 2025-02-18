@@ -146,7 +146,7 @@ const NavBar = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/book-create">
                         <FaBookMedical /> Create Book
                       </a>
                     </li>

@@ -1,4 +1,4 @@
-import Books from "../../components/books/books";
+import Books from "@/components/books/Books";
 
 const GetBooks = () => {
   return (

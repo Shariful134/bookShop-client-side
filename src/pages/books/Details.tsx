@@ -5,14 +5,25 @@ import {
 } from "../../redux/book/bookApi";
 import { FaBook } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
-import { TBook } from "../../types/type";
+import { TBook, TUser } from "../../types/type";
 import { useEffect } from "react";
+import { useAppSelector } from "@/redux/hooks";
+import { useCurrentToken } from "@/redux/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
 
 const Details = () => {
   const location = useLocation();
   const { id } = useParams();
   const { data: Book } = useGetSingleBookQuery(id);
   const { data: allBooks } = useGetAllBooksQuery(undefined);
+
+  const token = useAppSelector(useCurrentToken);
+  let user;
+  if (token) {
+    user = verifyToken(token) as TUser;
+  }
+  // console.log(user);
+  const admin = user?.role;
 
   const book = Book?.data;
 
@@ -115,12 +126,27 @@ const Details = () => {
                   <p>InStock: Unavailable</p>
                 )}
 
-                <div className="flex gap-2">
-                  <Link to={`/book-details/${sameBook?._id}`}>
-                    <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                      Details
-                    </button>
-                  </Link>
+                <div className="flex gap-2 flex-wrap justify-center">
+                  {admin ? (
+                    <div className="flex  flex-wrap justify-center gap-2">
+                      <Link to={`/book-details/${sameBook?._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Details
+                        </button>
+                      </Link>
+                      <Link to={`/book-update/${sameBook?._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Update
+                        </button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link to={`/book-details/${sameBook?._id}`}>
+                      <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        Details
+                      </button>
+                    </Link>
+                  )}
                   <Link to="/">
                     <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
                       Home
