@@ -5,9 +5,9 @@ import Home from "../pages/home/Home";
 import Details from "../pages/books/Details";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
-import Users from "@/pages/users/Users";
 import UpdateBooks from "@/pages/admin/UpdateBooks";
 import CreateBook from "@/pages/admin/CreateBook";
+import UsersData from "@/pages/users/usersData";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/users",
-        element: <Users></Users>,
+        element: <UsersData></UsersData>,
       },
       {
         path: "/book-update/:id",
@@ -51,27 +51,3 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
-
-// import { createBrowserRouter } from "react-router";
-// import App from "../App";
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       // <ProtectedRoutes role="admin">
-//       <App></App>
-//       // </ProtectedRoutes>
-//     ),
-//   },
-//   // {
-//   //   path: "/login",
-//   //   element: <Login></Login>,
-//   // },
-//   // {
-//   //   path: "/register",
-//   //   element: <Registration></Registration>,
-//   // },
-// ]);
-
-// export default router;

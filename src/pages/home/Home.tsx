@@ -1,6 +1,7 @@
 import { FaBook } from "react-icons/fa";
 import bannerImg from "../../assets/image/caroselImg-1.png";
-import Books from "../../components/books/books";
+import Books from "@/components/books/Books";
+
 const Home = () => {
   return (
     <div className="pt-16">

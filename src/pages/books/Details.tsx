@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useCurrentToken } from "@/redux/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
+import BookDelete from "@/components/modal/BookDelete";
 
 const Details = () => {
   const location = useLocation();
@@ -141,24 +142,27 @@ const Details = () => {
                           Update
                         </button>
                       </Link>
-                      <Link to={`/book-delete/${sameBook?._id}`}>
+                      <BookDelete id={sameBook?._id}></BookDelete>
+                      <Link to="/">
                         <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                          Delete
+                          Home
                         </button>
                       </Link>
                     </div>
                   ) : (
-                    <Link to={`/book-details/${sameBook?._id}`}>
-                      <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                        Details
-                      </button>
-                    </Link>
+                    <div className="flex gap-2 flex-wrap justify-center">
+                      <Link to={`/book-details/${sameBook?._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Details
+                        </button>
+                      </Link>
+                      <Link to="/">
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Home
+                        </button>
+                      </Link>
+                    </div>
                   )}
-                  <Link to="/">
-                    <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                      Home
-                    </button>
-                  </Link>
                 </div>
               </div>
 

@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import SelectForm from "@/components/form/SelectForm";
 import SelectDatePicker from "@/components/form/SelectDatePicker";
 
-import { TBook, TResponse } from "@/types/type";
+import { TResponse } from "@/types/type";
 import { toast } from "sonner";
 import {
   useGetSingleBookQuery,
@@ -75,17 +75,17 @@ const UpdatedBookComponent = () => {
       publisher: data.publisher ? data.publisher : book?.publisher,
       imageURL: data.imageURL ? data.imageURL : book?.imageURL,
     };
-    console.log(formData);
+
     try {
       const res = (await updateBook({
         id: id,
         data: formData,
-      })) as TResponse<TBook>;
-      console.log("res-update: ", res);
+      })) as TResponse<any>;
+      console.log("updated res : ", res?.data?.message);
       if (res?.error) {
         toast.error(res?.error?.data?.message);
       } else {
-        toast.success("Book Updated SuccessFully");
+        toast.success(res?.data?.message);
       }
     } catch (error) {
       console.log(error);

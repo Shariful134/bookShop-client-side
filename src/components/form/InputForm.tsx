@@ -18,7 +18,6 @@ const InputForm = ({ label, type, placeholder, onChange, id }: InputProps) => {
         id={id}
         placeholder={placeholder}
         onChange={onChange}
-        // value={value}
       />
     </div>
   );

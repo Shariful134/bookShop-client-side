@@ -13,6 +13,7 @@ import InStockSelect from "../select/InStockSelect";
 import { useAppSelector } from "@/redux/hooks";
 import { useCurrentToken } from "@/redux/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
+import BookDelete from "../modal/BookDelete";
 
 const Books = () => {
   const token = useAppSelector(useCurrentToken);
@@ -151,11 +152,7 @@ const Books = () => {
                           Update
                         </button>
                       </Link>
-                      <Link to={`/book-delete/${book._id}`}>
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
-                          Delete
-                        </button>
-                      </Link>
+                      <BookDelete id={book._id}></BookDelete>
                     </div>
                   ) : (
                     <Link to={`/book-details/${book._id}`}>
