@@ -1,6 +1,7 @@
-import { zodResolver } from "@hookform/resolvers/zod";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,45 +12,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FaBook } from "react-icons/fa";
 import SelectForm from "@/components/form/SelectForm";
 import SelectDatePicker from "@/components/form/SelectDatePicker";
-import { useCreatebookMutation } from "@/redux/book/bookApi";
+
 import { TBook, TResponse } from "@/types/type";
 import { toast } from "sonner";
+import {
+  useGetSingleBookQuery,
+  useUpdatebookMutation,
+} from "@/redux/book/bookApi";
 
-const FormSchema = z.object({
-  title: z.string().nonempty({
-    message: "title is Required",
-  }),
-  author: z.string().nonempty({
-    message: "author is Required",
-  }),
-  price: z.number().min(1, {
-    message: "price is Required",
-  }),
-  category: z.string().nonempty({
-    message: "category is Required",
-  }),
-  description: z.string().nonempty({
-    message: "description is Required",
-  }),
-  quantity: z.number({
-    message: "quantity is Required",
-  }),
-  inStock: z.string().nonempty({
-    message: "inStock is Required",
-  }),
-  publicationDate: z.string().nonempty({
-    message: "publicationDate is Required",
-  }),
-  publisher: z.string().nonempty({
-    message: "publisher is Required",
-  }),
-  imageURL: z.string().nonempty({
-    message: "imageURL is Required",
-  }),
-});
+import { useParams } from "react-router-dom";
 
 const stockOption = [
   { value: "true", label: "true" },
@@ -64,60 +37,62 @@ const categoryOption = [
   { value: "Religious", label: "Religious" },
 ];
 
-const CreateBook = () => {
-  const [addBook] = useCreatebookMutation();
+const UpdatedBookComponent = () => {
+  const { id } = useParams();
+  const { data: singleBook } = useGetSingleBookQuery(id);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const [updateBook] = useUpdatebookMutation();
+  const book = singleBook?.data;
+
+  const form = useForm({
     defaultValues: {
-      title: "The Power of Habit",
-      author: "Charles Duhigg",
-      price: 15.99,
-      category: "SelfDevelopment",
-      description:
-        "Atomic Habits is a powerful book that explores the science of habit formation and how small changeshabits, and the impact of environment on personal growth. It includes real-life examples,psychological principles, and actionable techniques",
-      quantity: 36,
-      inStock: "",
-      publicationDate: "",
-      publisher: "Random House",
-      imageURL:
-        "https://i.ibb.co.com/VcKNJg9d/DALL-E-2025-02-16-00-52-37-A-high-quality-programming-book-with-a-visually-appealing-front-cover-The.webp",
+      title: book?.title,
+      author: book?.author,
+      price: book?.price,
+      inStock: book?.price,
+      quantity: book?.price,
+      category: book?.category,
+      description: book?.description,
+      publicationDate: book?.publicationDate,
+      publisher: book?.publisher,
+      imageURL: book?.imageURL,
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (data: any) => {
     const formData = {
       ...data,
-      price: Number(data?.price),
-      quantity: Number(data?.quantity),
-      inStock: data?.inStock === "true",
+      title: data.title ? data.title : book?.title,
+      author: data.author ? data.author : book?.author,
+      price: data.price ? Number(data?.price) : book?.price,
+      quantity: data.quantity ? Number(data?.quantity) : book?.quantity,
+      inStock: data.inStock ? data?.inStock === "true" : book?.inStock,
+      category: data.category ? data.category : book?.category,
+      description: data.description ? data.description : book?.description,
+      publicationDate: data.publicationDate
+        ? data.publicationDate
+        : book?.publicationDate,
+      publisher: data.publisher ? data.publisher : book?.publisher,
+      imageURL: data.imageURL ? data.imageURL : book?.imageURL,
     };
+    console.log(formData);
     try {
-      const res = (await addBook(formData)) as TResponse<TBook>;
-      console.log("res: ", res);
+      const res = (await updateBook({
+        id: id,
+        data: formData,
+      })) as TResponse<TBook>;
+      console.log("res-update: ", res);
       if (res?.error) {
         toast.error(res?.error?.data?.message);
       } else {
-        toast.success("Book Created SuccessFully");
+        toast.success("Book Updated SuccessFully");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <div className="pt-16 px-10">
-      <div className=" text-center font-serif pt-8 pb-5 ">
-        <h2 className="text-3xl mb-2 text-cyan-500">
-          -- <FaBook className="inline" /> Book Create{" "}
-          <FaBook className="inline" /> --{" "}
-        </h2>
-        <p className="max-w-3/6 mx-auto">
-          Discover in-depth details about this book, including its author,
-          category, price, and availability. Get insights into the story and why
-          readers love it!
-        </p>
-      </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -279,4 +254,4 @@ const CreateBook = () => {
   );
 };
 
-export default CreateBook;
+export default UpdatedBookComponent;

@@ -1,6 +1,8 @@
 import { FaBook } from "react-icons/fa";
 import Details from "../books/Details";
 
+import UpdatedBookComponent from "@/components/books/UpdatedBookComponent";
+
 const UpdateBooks = () => {
   return (
     <div className="pt-10">
@@ -16,7 +18,7 @@ const UpdateBooks = () => {
         </p>
       </div>
       <div className="flex justify-center">
-        <h2 className="text-4xl">Here is your Update input</h2>
+        <UpdatedBookComponent></UpdatedBookComponent>
       </div>
       <Details></Details>
     </div>

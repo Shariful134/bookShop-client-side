@@ -103,10 +103,12 @@ const Details = () => {
       </div>
       <div className="flex justify-center flex-wrap gap-4 mb-5 font-serif">
         {sameCategory?.map((sameBook: TBook) => {
-          console.log(sameBook?._id);
           const inStock = sameBook.inStock;
           return (
-            <div className="card bg-base-100 w-75 relative group   border-1 border-slate-200 shadow-lg">
+            <div
+              key={sameBook?._id}
+              className="card bg-base-100 w-75 relative group   border-1 border-slate-200 shadow-lg"
+            >
               <figure className="px-5 pt-5">
                 <img
                   src={sameBook.imageURL}
@@ -137,6 +139,11 @@ const Details = () => {
                       <Link to={`/book-update/${sameBook?._id}`}>
                         <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
                           Update
+                        </button>
+                      </Link>
+                      <Link to={`/book-delete/${sameBook?._id}`}>
+                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                          Delete
                         </button>
                       </Link>
                     </div>
