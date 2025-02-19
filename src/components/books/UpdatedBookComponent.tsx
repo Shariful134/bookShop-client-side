@@ -92,7 +92,7 @@ const UpdatedBookComponent = () => {
     }
   };
   return (
-    <div className="pt-16 px-10">
+    <div className="pt-16 px-10 bg-[#d9cbb7]">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

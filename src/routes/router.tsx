@@ -7,7 +7,9 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import UpdateBooks from "@/pages/admin/UpdateBooks";
 import CreateBook from "@/pages/admin/CreateBook";
-import UsersData from "@/pages/users/usersData";
+import UsersData from "@/pages/users/UsersData";
+import ProtectedRoutes from "@/components/layout/ProtectedRoutes";
+import About from "@/pages/about/About";
 
 const router = createBrowserRouter([
   {
@@ -28,15 +30,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/users",
-        element: <UsersData></UsersData>,
+        element: (
+          <ProtectedRoutes role="admin">
+            <UsersData></UsersData>
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "/book-update/:id",
-        element: <UpdateBooks></UpdateBooks>,
+        element: (
+          <ProtectedRoutes role="admin">
+            <UpdateBooks></UpdateBooks>
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "/book-create",
-        element: <CreateBook></CreateBook>,
+        element: (
+          <ProtectedRoutes role="admin">
+            <CreateBook></CreateBook>
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "about",
+        element: <About></About>,
       },
       {
         path: "login",

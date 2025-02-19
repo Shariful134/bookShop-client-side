@@ -4,7 +4,7 @@ import Books from "@/components/books/Books";
 
 const Home = () => {
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-[#d9cbb7]">
       <div className="relative ">
         <img className=" h-96 w-full  " src={bannerImg} alt="" />
         <div className="max-w-93 absolute top-20 left-8 bg-red-100/45 font-serif p-4 rounded-lg">
@@ -13,7 +13,7 @@ const Home = () => {
             Discover a vast collection of books from every genre. Whether you
             love fiction,
           </p>
-          <button className="btn btn-xs bg-cyan-300 border-1 border-cyan-600 sm:btn-sm md:btn-md mt-2 bg ">
+          <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 sm:btn-sm md:btn-md mt-2 bg ">
             Buy Now
           </button>
         </div>
@@ -33,7 +33,7 @@ const Home = () => {
           </p>
         </div>
         <div className="flex justify-center flex-wrap gap-4 my-2">
-          <div className="card bg-base-100 w-75 border-1 border-slate-200 shadow-lg">
+          <div className="card  w-75 shadow-2xl ">
             <figure className="px-5 pt-5">
               <img
                 src="https://i.ibb.co.com/xScMg0jC/DALL-E-2025-02-16-00-51-24-A-high-quality-programming-book-with-a-visually-appealing-and-modern-fron.webp"
@@ -51,7 +51,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="card bg-base-100 w-75 shadow-lg border-1 border-slate-200">
+          <div className="card  w-75 shadow-2xl  ">
             <figure className="px-5 pt-5">
               <img
                 src="https://i.ibb.co.com/8nn4P2XQ/DALL-E-2025-02-12-01-29-28-A-small-sized-realistic-and-visually-distinct-book-cover-titled-Dark-Psyc.webp"
@@ -68,7 +68,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="card bg-base-100 w-75 shadow-lg border-1 border-slate-200">
+          <div className="card  w-75 shadow-2xl">
             <figure className="px-5 pt-5">
               <img
                 src="https://i.ibb.co.com/VcKNJg9d/DALL-E-2025-02-16-00-52-37-A-high-quality-programming-book-with-a-visually-appealing-front-cover-The.webp"
@@ -85,7 +85,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="card bg-base-100 w-75 shadow-lg border-1 border-slate-200">
+          <div className="card  w-75 shadow-2xl">
             <figure className="px-5 pt-5">
               <img
                 src="https://i.ibb.co.com/QvhWrqXc/DALL-E-2025-02-12-01-32-21-A-small-sized-visually-distinct-book-cover-titled-Mind-Games-The-Science.webp"

@@ -62,7 +62,7 @@ const NavBar = () => {
                 ? "text-cyan-600 font-bold border-b-2 border-cyan-600"
                 : "hover:text-cyan-600"
             }
-            to="/about-us"
+            to="/about"
           >
             <li>About</li>
           </NavLink>

@@ -5,7 +5,7 @@ import UpdatedBookComponent from "@/components/books/UpdatedBookComponent";
 
 const UpdateBooks = () => {
   return (
-    <div className="pt-10">
+    <div className="pt-10 bg-[#d9cbb7]">
       <div className=" text-center font-serif pt-8 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Update{" "}

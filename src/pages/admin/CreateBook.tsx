@@ -106,7 +106,7 @@ const CreateBook = () => {
   };
 
   return (
-    <div className="pt-16 px-10">
+    <div className="pt-16 px-10 bg-[#d9cbb7]">
       <div className=" text-center font-serif pt-8 pb-5 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Create{" "}

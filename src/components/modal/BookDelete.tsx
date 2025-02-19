@@ -32,17 +32,21 @@ const BookDelete = ({ id }: { id: string | undefined }) => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+      <AlertDialogTrigger className="btn border-1 rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
         Delete
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete! Are you Confirm?</AlertDialogTitle>
+          <AlertDialogTitle className="font-serif">
+            Delete! Are you Confirm?
+          </AlertDialogTitle>
           <AlertDialogDescription></AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDelete}>Confirm</AlertDialogAction>
+          <AlertDialogCancel className="font-serif">Cancel</AlertDialogCancel>
+          <AlertDialogAction className="font-serif" onClick={handleDelete}>
+            Confirm
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

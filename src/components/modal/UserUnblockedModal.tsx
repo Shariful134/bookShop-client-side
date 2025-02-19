@@ -32,10 +32,10 @@ const UserUnblockedModal = ({ id }: { id: string | undefined }) => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+      <AlertDialogTrigger className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
         UnBlock
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="font-serif">
         <AlertDialogHeader>
           <AlertDialogTitle>UnBlock! Are you Confirm?</AlertDialogTitle>
           <AlertDialogDescription></AlertDialogDescription>

@@ -1,6 +1,8 @@
+import SelectForm from "@/components/form/SelectForm";
 import UserBlockModal from "@/components/modal/UserBlockModal";
 import UserDeleteModal from "@/components/modal/UserDeleteModal";
 import UserUnblockedModal from "@/components/modal/UserUnblockedModal";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -11,17 +13,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useGetAllUserQuery } from "@/redux/user/userApi";
+import { useState } from "react";
 import { FaBook } from "react-icons/fa";
 
 type User = {
   _id?: string;
   name: string;
   email: string;
-  isBlocked: boolean;
+  isBlocked?: boolean;
 };
 
 const UsersData = () => {
   const { data: allData } = useGetAllUserQuery(undefined);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
   const invoices = allData?.data?.map((item: User) => ({
     _id: item._id,
@@ -29,22 +34,55 @@ const UsersData = () => {
     email: item?.email,
     isBlocked: item?.isBlocked,
   }));
-  console.log(invoices);
+
+  const options = [
+    { value: "both", label: "Email & Name" },
+    { value: "name", label: "Name" },
+    { value: "email", label: "Email" },
+  ];
+
+  const filteredUsers = invoices?.filter((user: User) => {
+    const SearchData = searchTerm
+      ? user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+    if (!selectedFilter || selectedFilter === "both") {
+      return SearchData;
+    } else if (selectedFilter === "name") {
+      return user.name.toLowerCase().includes(searchTerm.toLowerCase());
+    } else if (selectedFilter === "email") {
+      return user.email.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+  });
+
   return (
-    <div className="px-10 pt-18">
-      <div className=" text-center font-serif  ">
+    <div className="px-10 pt-18 ">
+      <div className=" text-center font-serif pb-5 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Users Data{" "}
           <FaBook className="inline" /> --{" "}
         </h2>
-        <p className="max-w-3/6 mx-auto">
-          {" "}
-          Explore our most popular books, loved by readers worldwide. From
-          fiction to self-help, find your next favorite read today!
-        </p>
+      </div>
+      <div className="flex flex-wrap flex-start gap-2">
+        <div className="w-60">
+          <Input
+            className="w-full "
+            type="search"
+            value={searchTerm}
+            placeholder="Search here"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div className="w-60">
+          <SelectForm
+            options={options}
+            placeholder="Selecet"
+            onChange={setSelectedFilter}
+          ></SelectForm>
+        </div>
       </div>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption></TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="max-w-5/6">Name</TableHead>
@@ -54,20 +92,28 @@ const UsersData = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices?.map((invoice: User) => (
-            <TableRow key={invoice._id}>
-              <TableCell className="font-medium">{invoice.name}</TableCell>
-              <TableCell>{invoice.email}</TableCell>
-              <TableCell className="flex flex-wrap  gap-2">
-                <UserDeleteModal id={invoice._id}></UserDeleteModal>
-                {invoice?.isBlocked ? (
-                  <UserUnblockedModal id={invoice._id}></UserUnblockedModal>
-                ) : (
-                  <UserBlockModal id={invoice._id}></UserBlockModal>
-                )}
-              </TableCell>
+          {filteredUsers?.length > 0 ? (
+            filteredUsers?.map((user: User) => (
+              <TableRow key={user._id}>
+                <TableCell className="font-medium font-serif">
+                  {user.name}
+                </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell className="flex flex-wrap  gap-2">
+                  <UserDeleteModal id={user._id}></UserDeleteModal>
+                  {user?.isBlocked ? (
+                    <UserUnblockedModal id={user._id}></UserUnblockedModal>
+                  ) : (
+                    <UserBlockModal id={user._id}></UserBlockModal>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell>No Data</TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </div>

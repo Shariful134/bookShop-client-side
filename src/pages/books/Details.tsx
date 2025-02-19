@@ -37,7 +37,7 @@ const Details = () => {
   }, [location]);
 
   return (
-    <div className="pt-16 px-10">
+    <div className="pt-16 px-10 bg-[#d9cbb7]">
       <div className=" text-center font-serif pt-8 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Details{" "}
@@ -49,7 +49,7 @@ const Details = () => {
           readers love it!
         </p>
       </div>
-      <div className="card flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-9/12 bg-base-100 shadow-sm mt-5 p-5  border-1 border-slate-200">
+      <div className="card flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-9/12  shadow-2xl  mt-5 p-5  ">
         <figure>
           <img src={book?.imageURL} alt="Movie" />
         </figure>
@@ -80,11 +80,11 @@ const Details = () => {
             {book?.description}
           </p>
           <div className="card-actions justify-start">
-            <button className="btn  bg-cyan-300 hover:bg-cyan-400 border-1 hover:border-cyan-900 border-cyan-500">
+            <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
               Add To Cart <IoMdCart className="text-xl" />
             </button>
             <Link to="/">
-              <button className="btn  bg-cyan-300 hover:bg-cyan-400 border-1 hover:border-cyan-900 border-cyan-500">
+              <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                 Home
               </button>
             </Link>
@@ -98,17 +98,17 @@ const Details = () => {
         </h2>
         <p className="max-w-3/6 mx-auto">
           More books from the{" "}
-          <span className="font-bold text-cyan-400">{book?.category}</span>{" "}
+          <span className="font-bold text-cyan-600">{book?.category}</span>{" "}
           category that you may love!
         </p>
       </div>
-      <div className="flex justify-center flex-wrap gap-4 mb-5 font-serif">
+      <div className="flex justify-center flex-wrap gap-4 pb-5 font-serif bg-[#d9cbb7]">
         {sameCategory?.map((sameBook: TBook) => {
           const inStock = sameBook.inStock;
           return (
             <div
               key={sameBook?._id}
-              className="card bg-base-100 w-75 relative group   border-1 border-slate-200 shadow-lg"
+              className="card  w-75 relative group shadow-2xl"
             >
               <figure className="px-5 pt-5">
                 <img
@@ -133,18 +133,18 @@ const Details = () => {
                   {admin ? (
                     <div className="flex  flex-wrap justify-center gap-2">
                       <Link to={`/book-details/${sameBook?._id}`}>
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Details
                         </button>
                       </Link>
                       <Link to={`/book-update/${sameBook?._id}`}>
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Update
                         </button>
                       </Link>
                       <BookDelete id={sameBook?._id}></BookDelete>
                       <Link to="/">
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Home
                         </button>
                       </Link>
@@ -152,12 +152,12 @@ const Details = () => {
                   ) : (
                     <div className="flex gap-2 flex-wrap justify-center">
                       <Link to={`/book-details/${sameBook?._id}`}>
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Details
                         </button>
                       </Link>
                       <Link to="/">
-                        <button className="btn px-5  bg-cyan-300 hover:bg-cyan-400 border-1 border-cyan-500 hover:border-cyan-800">
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Home
                         </button>
                       </Link>
@@ -167,7 +167,7 @@ const Details = () => {
               </div>
 
               <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
-                <button className="btn w-full hover:bg-cyan-400 bg-cyan-300 border-1 hover:border-cyan-500">
+                <button className="btn w-full border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                   Add To Cart <IoMdCart className="text-xl" />
                 </button>
               </div>
