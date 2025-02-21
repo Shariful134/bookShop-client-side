@@ -69,7 +69,7 @@ const Details = () => {
             <span className="text-cyan-600">Quantity</span>: {book?.quantity}
           </p>
           <p>
-            <span className="text-cyan-600">Publisher</span>: {book?.publishert}
+            <span className="text-cyan-600">Publisher</span>: {book?.publisher}
           </p>
           <p>
             <span className="text-cyan-600">PublicationDate</span>:{" "}
@@ -86,6 +86,11 @@ const Details = () => {
             <Link to="/">
               <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                 Home
+              </button>
+            </Link>
+            <Link to={`/book-order/${book._id}`}>
+              <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                Buy Now
               </button>
             </Link>
           </div>
@@ -161,11 +166,15 @@ const Details = () => {
                           Home
                         </button>
                       </Link>
+                      <Link to={`/book-order/${book._id}`}>
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                          Buy Now
+                        </button>
+                      </Link>
                     </div>
                   )}
                 </div>
               </div>
-
               <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
                 <button className="btn w-full border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                   Add To Cart <IoMdCart className="text-xl" />

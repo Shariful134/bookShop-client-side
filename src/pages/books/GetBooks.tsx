@@ -112,7 +112,7 @@ const GetBooks = () => {
             return (
               <div
                 key={book?._id}
-                className="card  w-75 relative grou shadow-2xl"
+                className="card  w-75 relative group shadow-2xl"
               >
                 <figure className="px-5 pt-5">
                   <img src={book.imageURL} alt="Shoes" className="rounded-xl" />
@@ -146,7 +146,7 @@ const GetBooks = () => {
                           Details
                         </button>
                       </Link>
-                      <Link to="#">
+                      <Link to={`/book-order/${book._id}`}>
                         <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                           Buy Now
                         </button>
@@ -154,7 +154,6 @@ const GetBooks = () => {
                     </div>
                   )}
                 </div>
-
                 <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
                   <button className="btn border-1 w-full font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                     Add To Cart <IoMdCart className="text-xl" />

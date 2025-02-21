@@ -7,9 +7,13 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import UpdateBooks from "@/pages/admin/UpdateBooks";
 import CreateBook from "@/pages/admin/CreateBook";
-import UsersData from "@/pages/users/UsersData";
+
 import ProtectedRoutes from "@/components/layout/ProtectedRoutes";
 import About from "@/pages/about/About";
+
+import UsersData from "@/pages/users/UsersData";
+import Order from "@/pages/order/Order";
+import VerifyOrder from "@/pages/order/VerifyOrder";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +31,22 @@ const router = createBrowserRouter([
       {
         path: "/book-details/:id",
         element: <Details></Details>,
+      },
+      {
+        path: "/book-order/:id",
+        element: (
+          <ProtectedRoutes role="user">
+            <Order></Order>
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "/order-verify",
+        element: (
+          <ProtectedRoutes role="user">
+            <VerifyOrder></VerifyOrder>
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "/users",

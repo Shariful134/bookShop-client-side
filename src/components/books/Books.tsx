@@ -14,6 +14,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { useCurrentToken } from "@/redux/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
 import BookDelete from "../modal/BookDelete";
+import { toast } from "sonner";
 
 const Books = () => {
   const navigate = useNavigate();
@@ -82,6 +83,12 @@ const Books = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleBuy = () => {
+    if (!token) {
+      toast.error("Please Login to Order");
+    }
+  };
+
   return (
     <div>
       <div className=" text-center font-serif  px-10 pt-8 bg-[#d9cbb7]">
@@ -100,7 +107,7 @@ const Books = () => {
         className=" mt-5 flex justify-center flex-wrap lg:gap-4 sm:gap-2 md:gap-4 px-10"
       >
         <Input
-          className="w-75 "
+          className="w-75  "
           type="search"
           value={searchTerm}
           placeholder="Search here"
@@ -152,11 +159,21 @@ const Books = () => {
                       <BookDelete id={book._id}></BookDelete>
                     </div>
                   ) : (
-                    <Link to={`/book-details/${book._id}`}>
-                      <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-                        Details
-                      </button>
-                    </Link>
+                    <div className=" flex flex-wrap justify-center gap-2">
+                      <Link to={`/book-details/${book._id}`}>
+                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                          Details
+                        </button>
+                      </Link>
+                      <Link to={`/book-order/${book._id}`}>
+                        <button
+                          onClick={handleBuy}
+                          className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                        >
+                          Buy Now
+                        </button>
+                      </Link>
+                    </div>
                   )}
                 </div>
 

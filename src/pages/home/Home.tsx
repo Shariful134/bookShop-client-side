@@ -94,7 +94,7 @@ const Home = () => {
               />
             </figure>
             <div className="card-body items-center text-center font-serif">
-              <h2 className="card-title">How to Improove mine</h2>
+              <h2 className="card-title ">How to Improove mine</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
                 Enhance your coding skills with advanced techniques, best

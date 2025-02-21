@@ -25,10 +25,10 @@ const CategorySelect: React.FC<SelectedProps> = ({
   };
   return (
     <Select onValueChange={handleSelect}>
-      <SelectTrigger className="w-75">
+      <SelectTrigger className="w-75 ">
         <SelectValue placeholder="Select a Category" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="border border-black/30 rounded-lg">
         <SelectGroup>
           <SelectItem key="All Category" value="All Category">
             All Category
