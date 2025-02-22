@@ -16,7 +16,7 @@ import Order from "@/pages/order/Order";
 import VerifyOrder from "@/pages/order/VerifyOrder";
 import OrdersData from "@/pages/order/OrdersData";
 import OrderHistry from "@/pages/order/OrderHistry";
-import UserAllOrder from "@/pages/admin/UserAllOrder";
+import AllOrder from "@/pages/admin/AllOrder";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         path: "/users-all-orders",
         element: (
           <ProtectedRoutes role="admin">
-            <UserAllOrder></UserAllOrder>
+            <AllOrder></AllOrder>
           </ProtectedRoutes>
         ),
       },

@@ -32,7 +32,7 @@ const UserDeleteModal = ({ id }: { id: string | undefined }) => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+      <AlertDialogTrigger className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
         Delete
       </AlertDialogTrigger>
       <AlertDialogContent className="font-serif">

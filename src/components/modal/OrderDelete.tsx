@@ -10,17 +10,17 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useDeleteOrderMutation } from "@/redux/order/orderApi";
 
-import { useBlockUserMutation } from "@/redux/user/userApi";
 import { TResponse } from "@/types/type";
 import { toast } from "sonner";
 
-const UserBlockModal = ({ id }: { id: string | undefined }) => {
-  const [blockUser] = useBlockUserMutation();
+const OrderDelete = ({ id }: { id: string | undefined }) => {
+  const [deleteuser] = useDeleteOrderMutation();
   const handleDelete = async () => {
     try {
-      const res = (await blockUser(id)) as TResponse<any>;
-
+      const res = (await deleteuser(id)) as TResponse<any>;
+      console.log("res-update: ", res);
       if (res?.error) {
         toast.error(res?.error?.data?.message);
       } else {
@@ -34,11 +34,11 @@ const UserBlockModal = ({ id }: { id: string | undefined }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-        Block
+        Delete
       </AlertDialogTrigger>
       <AlertDialogContent className="font-serif">
         <AlertDialogHeader>
-          <AlertDialogTitle>Block! Are you Confirm?</AlertDialogTitle>
+          <AlertDialogTitle>Delete! Are you Confirm?</AlertDialogTitle>
           <AlertDialogDescription></AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -50,4 +50,4 @@ const UserBlockModal = ({ id }: { id: string | undefined }) => {
   );
 };
 
-export default UserBlockModal;
+export default OrderDelete;
