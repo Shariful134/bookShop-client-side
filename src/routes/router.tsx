@@ -15,6 +15,8 @@ import UsersData from "@/pages/users/UsersData";
 import Order from "@/pages/order/Order";
 import VerifyOrder from "@/pages/order/VerifyOrder";
 import OrdersData from "@/pages/order/OrdersData";
+import OrderHistry from "@/pages/order/OrderHistry";
+import UserAllOrder from "@/pages/admin/UserAllOrder";
 
 const router = createBrowserRouter([
   {
@@ -58,10 +60,26 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "get-order-histry",
+        element: (
+          <ProtectedRoutes role="user">
+            <OrderHistry></OrderHistry>
+          </ProtectedRoutes>
+        ),
+      },
+      {
         path: "/users",
         element: (
           <ProtectedRoutes role="admin">
             <UsersData></UsersData>
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "/users-all-orders",
+        element: (
+          <ProtectedRoutes role="admin">
+            <UserAllOrder></UserAllOrder>
           </ProtectedRoutes>
         ),
       },

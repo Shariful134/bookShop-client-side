@@ -37,8 +37,8 @@ const Details = () => {
   }, [location]);
 
   return (
-    <div className="pt-16 px-10 bg-[#d9cbb7]">
-      <div className=" text-center font-serif pt-8 ">
+    <div className="pt-10 px-10 bg-[#d9cbb7]">
+      <div className=" text-center pt-8 font-[inter]">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Details{" "}
           <FaBook className="inline" /> --{" "}
@@ -49,11 +49,11 @@ const Details = () => {
           readers love it!
         </p>
       </div>
-      <div className="card flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-9/12  shadow-2xl  mt-5 p-5  ">
+      <div className="card max-w-10/12 flex sm:flex-col md:flex-row lg:flex-row  mx-auto shadow-2xl  mt-5 p-5  ">
         <figure>
-          <img src={book?.imageURL} alt="Movie" />
+          <img src={book?.imageURL} alt="imageURL" />
         </figure>
-        <div className="card-body font-serif">
+        <div className="card-body font-[inter]  ">
           <h2 className="card-title">{book?.title}</h2>
           <p>
             <span className="text-cyan-600">Category</span>: {book?.category}
@@ -79,21 +79,34 @@ const Details = () => {
             <span className="text-cyan-600">Description</span>:{" "}
             {book?.description}
           </p>
-          <div className="card-actions justify-start">
-            <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-              Add To Cart <IoMdCart className="text-xl" />
-            </button>
-            <Link to="/">
-              <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-                Home
+          {admin == "admin" ? (
+            <div className="card-actions justify-start">
+              <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                Add To Cart <IoMdCart className="text-xl" />
               </button>
-            </Link>
-            <Link to={`/book-order/${book?._id}`}>
-              <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-                Buy Now
+              <Link to="/">
+                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                  Home
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="card-actions justify-start">
+              <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                Add To Cart <IoMdCart className="text-xl" />
               </button>
-            </Link>
-          </div>
+              <Link to="/">
+                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                  Home
+                </button>
+              </Link>
+              <Link to={`/book-order/${book?._id}`}>
+                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                  Buy Now
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className=" text-center font-serif pt-8 ">
@@ -135,7 +148,7 @@ const Details = () => {
                 )}
 
                 <div className="flex gap-2 flex-wrap justify-center">
-                  {admin ? (
+                  {admin == "admin" ? (
                     <div className="flex  flex-wrap justify-center gap-2">
                       <Link to={`/book-details/${sameBook?._id}`}>
                         <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">

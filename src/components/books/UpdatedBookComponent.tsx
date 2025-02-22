@@ -98,7 +98,7 @@ const UpdatedBookComponent = () => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full space-y-6"
         >
-          <div className=" grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-5">
+          <div className=" grid font-[inter] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-5">
             <FormField
               control={form.control}
               name="title"
@@ -106,7 +106,11 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="title" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="title"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,7 +123,11 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Author</FormLabel>
                   <FormControl>
-                    <Input placeholder="author" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="author"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,7 +140,12 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Price</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="price" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      type="number"
+                      placeholder="price"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -146,7 +159,11 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="description" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="description"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -176,7 +193,12 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Quantity</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="quantity" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      type="number"
+                      placeholder="quantity"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -222,7 +244,11 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Publisher</FormLabel>
                   <FormControl>
-                    <Input placeholder="publisher" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="publisher"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -236,7 +262,11 @@ const UpdatedBookComponent = () => {
                 <FormItem>
                   <FormLabel>Image URL</FormLabel>
                   <FormControl>
-                    <Input placeholder="imageURl" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="imageURl"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -246,7 +276,12 @@ const UpdatedBookComponent = () => {
 
           <div className="text-center mb-2">
             {" "}
-            <Button type="submit">Submit</Button>
+            <Button
+              className="btn border-1 font-[inter] text-black rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+              type="submit"
+            >
+              Submit
+            </Button>
           </div>
         </form>
       </Form>

@@ -20,7 +20,7 @@ type Props = {
 const SelectForm = ({ options, placeholder, onChange }: Props) => {
   return (
     <Select onValueChange={onChange}>
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="w-full border-1 border-gray-400">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

@@ -21,7 +21,7 @@ const orderApi = baseApi.injectEndpoints({
       }),
       providesTags: ["order"],
     }),
-    getOrder: builder.query({
+    getAllOrder: builder.query({
       query: () => ({
         url: `/order/getOrders`,
         method: "GET",
@@ -57,7 +57,7 @@ const orderApi = baseApi.injectEndpoints({
 export const {
   useAddOrderMutation,
   useVerifyOrderQuery,
-  useGetOrderQuery,
+  useGetAllOrderQuery,
   useGetSingleOrderQuery,
   useDeleteOrderMutation,
   useUpdateOrderMutation,

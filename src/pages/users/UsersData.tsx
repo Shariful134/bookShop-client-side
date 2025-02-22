@@ -21,6 +21,7 @@ type User = {
   name: string;
   email: string;
   isBlocked?: boolean;
+  index: number;
 };
 
 const UsersData = () => {
@@ -28,11 +29,12 @@ const UsersData = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
-  const invoices = allData?.data?.map((item: User) => ({
+  const invoices = allData?.data?.map((item: User, index: number) => ({
     _id: item._id,
     name: item?.name,
     email: item?.email,
     isBlocked: item?.isBlocked,
+    index: index + 1,
   }));
 
   const options = [
@@ -56,17 +58,21 @@ const UsersData = () => {
   });
 
   return (
-    <div className="px-10 pt-18 ">
-      <div className=" text-center font-serif pb-5 ">
-        <h2 className="text-3xl mb-2 text-cyan-500">
+    <div className="px-10 pt-18 bg-[#d9cbb7]">
+      <div className=" text-center font-[inter] pb-10 pt-5">
+        <h2 className="text-3xl mb-2  text-cyan-500">
           -- <FaBook className="inline" /> Users Data{" "}
           <FaBook className="inline" /> --{" "}
         </h2>
+        <p>
+          Currently, we have a total of {allData?.data?.length} registered
+          users.
+        </p>
       </div>
-      <div className="flex flex-wrap flex-start gap-2">
+      <div className="flex flex-wrap flex-start font-[inter] gap-2">
         <div className="w-60">
           <Input
-            className="w-full "
+            className="w-full border-1 border-gray-400 "
             type="search"
             value={searchTerm}
             placeholder="Search here"
@@ -81,7 +87,7 @@ const UsersData = () => {
           ></SelectForm>
         </div>
       </div>
-      <Table>
+      <Table className="font-[inter]">
         <TableCaption></TableCaption>
         <TableHeader>
           <TableRow>
@@ -95,8 +101,8 @@ const UsersData = () => {
           {filteredUsers?.length > 0 ? (
             filteredUsers?.map((user: User) => (
               <TableRow key={user._id}>
-                <TableCell className="font-medium font-serif">
-                  {user.name}
+                <TableCell className="font-medium font-[inter]">
+                  {user.index}. {user.name}
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell className="flex flex-wrap  gap-2">

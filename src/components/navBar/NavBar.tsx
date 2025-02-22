@@ -135,13 +135,20 @@ const NavBar = () => {
             </li>
             {user ? (
               <>
-                <li>
-                  <a>
-                    <FaHistory /> Order History
-                  </a>
-                </li>
+                {user.role == "user" && (
+                  <li>
+                    <a href="/get-order-histry">
+                      <FaHistory /> Order History
+                    </a>
+                  </li>
+                )}
                 {admin === "admin" && (
                   <>
+                    <li>
+                      <a href="/users-all-orders">
+                        <FaHistory /> All Order History
+                      </a>
+                    </li>
                     <li>
                       <a href="/users">
                         <FaHistory /> User History

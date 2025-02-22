@@ -7,25 +7,25 @@ const Home = () => {
     <div className="pt-16 bg-[#d9cbb7]">
       <div className="relative ">
         <img className=" h-96 w-full  " src={bannerImg} alt="" />
-        <div className="max-w-93 absolute top-20 left-8 bg-red-100/45 font-serif p-4 rounded-lg">
+        <div className="max-w-93 absolute top-20 left-8 bg-red-100/45 font-[inter] p-4 rounded-lg">
           <h2 className="text-3xl mb-2 font-bold">Your Best Companion</h2>
           <p>
             Discover a vast collection of books from every genre. Whether you
             love fiction,
           </p>
-          <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 sm:btn-sm md:btn-md mt-2 bg ">
+          <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 sm:btn-sm md:btn-md mt-2 bg ">
             Buy Now
           </button>
         </div>
       </div>
       {/* ===============Best selling  sections =================== */}
       <section className="mt-8 px-10">
-        <div className=" text-center font-serif">
+        <div className=" text-center font-[inter]">
           <h2 className="text-3xl mb-2 text-cyan-500">
             -- <FaBook className="inline" /> Best Selling Books{" "}
             <FaBook className="inline" /> --{" "}
           </h2>
-          <p className="max-w-3/6 mx-auto">
+          <p className="max-w-3/6 mx-auto font-[inter]">
             {" "}
             Discover a curated selection of our top-rated books! Whether you're
             into programming, self-development, or fiction, find the perfect
@@ -41,7 +41,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center font-serif">
+            <div className="card-body items-center text-center font-[inter]">
               <h2 className="card-title">How to Learn Programming</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -59,7 +59,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center font-serif">
+            <div className="card-body items-center text-center font-[inter]">
               <h2 className="card-title">Dark Psychology Secrets</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -76,7 +76,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center font-serif">
+            <div className="card-body items-center text-center font-[inter]">
               <h2 className="card-title">Mastering as Programmer</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>
@@ -93,7 +93,7 @@ const Home = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center font-serif">
+            <div className="card-body items-center text-center font-[inter]">
               <h2 className="card-title ">How to Improove mine</h2>
               <h4 className="text-xl text-cyan-500">Self-Development</h4>
               <p>

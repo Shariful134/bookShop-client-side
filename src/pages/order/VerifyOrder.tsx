@@ -17,7 +17,7 @@ const VerifyOrder = () => {
       {isLoading ? (
         <SkeletonDemo></SkeletonDemo>
       ) : (
-        <div className="container max-w-7/12 mx-auto px-10 pt-10">
+        <div className="container font-[inter] max-w-7/12 mx-auto px-10 pt-10">
           <div className=" py-5 px-10 shadow-2xl mb-2">
             <div className="flex justify-center items-center gap-2">
               <h2 className="text-3xl"> BookNest</h2>
@@ -65,7 +65,7 @@ const VerifyOrder = () => {
                 </h3>
               </div>
             </div>
-            <div className="flex justify-between text-gray-800 pt-5">
+            <div className="flex justify-between font-[inter] text-gray-800 pt-5">
               <div>
                 <h3 className="text-xl  font-semibold">Payment Information</h3>
                 <h3 className="text-sm font-semibold">
@@ -85,13 +85,13 @@ const VerifyOrder = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             <Link to={`/get-orders/${order_id}`}>
-              <button className="btn mb-5 border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn mb-5 border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                 View Order
               </button>
             </Link>
 
             <Link to="/">
-              <button className="btn mb-5 border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn mb-5 border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                 Home
               </button>
             </Link>

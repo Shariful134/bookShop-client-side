@@ -42,7 +42,7 @@ const Registration = () => {
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <fieldset className="fieldset">
+            <fieldset className="fieldset font-[inter]">
               <form onSubmit={handleRegister}>
                 <label className="fieldset-label">Name</label>
                 <input

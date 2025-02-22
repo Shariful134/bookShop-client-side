@@ -11,7 +11,7 @@ type InputProps = {
 };
 const InputForm = ({ label, type, placeholder, onChange, id }: InputProps) => {
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full border-1 border-gray-400 max-w-sm items-center gap-1.5">
       <Label htmlFor={id}>{label}</Label>
       <Input
         type={type}

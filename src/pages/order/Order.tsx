@@ -64,6 +64,7 @@ const Order = () => {
 
     try {
       const res = (await addOrder(orderData)) as TResponse<any>;
+      console.log(res);
 
       if (res?.error) {
         toast.error(res?.error?.data?.message);
@@ -79,7 +80,7 @@ const Order = () => {
   return (
     <div className="bg-[#d9cbb7] pt-18 px-10 flex gap-2 flex-wrap justify-center pb-5">
       <div className="card mt-5  w-full max-w-sm shrink-0 shadow-2xl ">
-        <div className="card-body">
+        <div className="card-body font-[inter]">
           <div className="flex justify-between items-end">
             <label className="fieldset-label">Quantity</label>
             <div className="flex flex-col gap-2">
@@ -115,7 +116,7 @@ const Order = () => {
             </div>
           </div>
           <hr className="text-gray-400"></hr>
-          <fieldset className="fieldset font-serif">
+          <fieldset className="fieldset font-[inter]">
             <form onSubmit={handleLogin}>
               <label className="fieldset-label">Name</label>
               <input
@@ -152,7 +153,7 @@ const Order = () => {
               />
               <button
                 type="submit"
-                className="btn font-(family-name:Poppins) border-1 mt-5 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn  border-1 mt-5 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
               >
                 Order Now
               </button>
@@ -160,11 +161,11 @@ const Order = () => {
           </fieldset>
         </div>
       </div>
-      <div className="card  flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-7/12   shadow-2xl  mt-5 p-5  ">
+      <div className="card font-[inter]  flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-7/12   shadow-2xl  mt-5 p-5  ">
         <figure>
           <img src={book?.imageURL} alt="Movie" />
         </figure>
-        <div className="card-body font-serif">
+        <div className="card-body font-[inter]">
           <div className="flex justify-between items-end">
             <h2 className="card-title">{book?.title}</h2>
           </div>
@@ -192,10 +193,10 @@ const Order = () => {
             <span className="text-cyan-600">Description</span>:{" "}
             {book?.description}
           </p>
-          <div className="card-actions justify-start">
+          <div className="card-actions justify-start font-[inter]">
             <Link to="/">
               <Button
-                className="btn font-(family-name:Poppins) border-1 mt-5 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn border-1 mt-5  rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
                 variant="outline"
               >
                 Home
@@ -205,58 +206,6 @@ const Order = () => {
         </div>
       </div>
     </div>
-    // <div className="pt-18">
-    // <div className="card flex sm:flex-col md:flex-row lg:flex-row  mx-auto max-w-9/12  shadow-2xl  mt-5 p-5  ">
-    //   <figure>
-    //     <img src={book?.imageURL} alt="Movie" />
-    //   </figure>
-    //   <div className="card-body font-serif">
-    //     <div className="flex justify-between items-end">
-    //       <h2 className="card-title">{book?.title}</h2>
-    //     </div>
-    //     <p>
-    //       <span className="text-cyan-600">Category</span>: {book?.category}
-    //     </p>
-    //     <p>
-    //       <span className="text-cyan-600">Author</span>: {book?.author}
-    //     </p>
-
-    //     <p>
-    //       <span className="text-cyan-600">Price</span>: {book?.price} $
-    //     </p>
-    //     <p>
-    //       <span className="text-cyan-600">Quantity</span>: {book?.quantity}
-    //     </p>
-    //     <p>
-    //       <span className="text-cyan-600">Publisher</span>: {book?.publisher}
-    //     </p>
-    //     <p>
-    //       <span className="text-cyan-600">PublicationDate</span>:{" "}
-    //       {book?.publicationDate}
-    //     </p>
-    //     <p>
-    //       <span className="text-cyan-600">Description</span>:{" "}
-    //       {book?.description}
-    //     </p>
-    //     <div className="card-actions justify-start">
-    //       <Link to="/">
-    //         <Button
-    //           className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
-    //           variant="outline"
-    //         >
-    //           Home
-    //         </Button>
-    //       </Link>
-    //       <ModalOrder id={book?._id}></ModalOrder>
-    //       {/* <Link to="#">
-    //         <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
-    //           Order Confirm
-    //         </button>
-    //       </Link> */}
-    //     </div>
-    //   </div>
-    // </div>
-    // </div>
   );
 };
 

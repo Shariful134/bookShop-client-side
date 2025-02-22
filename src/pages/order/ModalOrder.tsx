@@ -74,21 +74,21 @@ const ModalOrder = ({ id }: { id: string }) => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+          className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
           variant="outline"
         >
           Order Confirm
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
-        <div className="grid gap-4">
+        <div className="grid gap-4 font-[inter]">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">{book?.title}</h4>
           </div>
           <div className="grid gap-2">
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="maxWidth">Quantity:</Label>
-              <div className="flex w-[120px] border-1  justify-between border-amber-400  rounded-2xl">
+              <div className="flex w-[120px] border-1  justify-between border-amber-400 font-[inter] rounded-2xl">
                 <button
                   onClick={handleDecrease}
                   className="hover:bg-rose-400 rounded-full px-1"
@@ -113,7 +113,7 @@ const ModalOrder = ({ id }: { id: string }) => {
             <div className="grid grid-cols-3 items-center gap-4">
               <Button
                 onClick={hanldeOrder}
-                className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
                 variant="outline"
               >
                 Order Now

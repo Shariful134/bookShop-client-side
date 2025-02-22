@@ -107,7 +107,7 @@ const CreateBook = () => {
 
   return (
     <div className="pt-16 px-10 bg-[#d9cbb7]">
-      <div className=" text-center font-serif pt-8 pb-5 ">
+      <div className=" text-center font-[inter] pt-8 pb-5 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Create{" "}
           <FaBook className="inline" /> --{" "}
@@ -131,7 +131,11 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="title" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="title"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -144,7 +148,11 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Author</FormLabel>
                   <FormControl>
-                    <Input placeholder="author" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="author"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -157,7 +165,12 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Price</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="price" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      type="number"
+                      placeholder="price"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -171,7 +184,11 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="description" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="description"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -201,7 +218,12 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Quantity</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="quantity" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      type="number"
+                      placeholder="quantity"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -247,7 +269,11 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Publisher</FormLabel>
                   <FormControl>
-                    <Input placeholder="publisher" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="publisher"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -261,7 +287,11 @@ const CreateBook = () => {
                 <FormItem>
                   <FormLabel>Image URL</FormLabel>
                   <FormControl>
-                    <Input placeholder="imageURl" {...field} />
+                    <Input
+                      className="border-1 border-gray-400"
+                      placeholder="imageURl"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -269,9 +299,14 @@ const CreateBook = () => {
             />
           </div>
 
-          <div className="text-center mb-2">
+          <div className="text-center pb-5">
             {" "}
-            <Button type="submit">Submit</Button>
+            <Button
+              className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 text-black"
+              type="submit"
+            >
+              Submit
+            </Button>
           </div>
         </form>
       </Form>
