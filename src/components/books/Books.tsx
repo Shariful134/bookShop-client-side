@@ -14,7 +14,6 @@ import { useAppSelector } from "@/redux/hooks";
 import { useCurrentToken } from "@/redux/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
 import BookDelete from "../modal/BookDelete";
-import { toast } from "sonner";
 
 const Books = () => {
   const navigate = useNavigate();
@@ -85,8 +84,9 @@ const Books = () => {
 
   const handleBuy = () => {
     if (!token) {
-      toast.error("Please Login to Order");
+      navigate("/login");
     }
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -107,7 +107,7 @@ const Books = () => {
         className=" mt-5 flex justify-center flex-wrap lg:gap-4 sm:gap-2 md:gap-4 px-10"
       >
         <Input
-          className="w-75  "
+          className="w-75 border-gray-500 "
           type="search"
           value={searchTerm}
           placeholder="Search here"

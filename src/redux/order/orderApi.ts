@@ -15,9 +15,18 @@ const orderApi = baseApi.injectEndpoints({
 
     verifyOrder: builder.query({
       query: (order_id) => ({
-        url: `/order?order_id${order_id}`,
+        url: `/order`,
+        params: { order_id },
         method: "GET",
       }),
+      providesTags: ["order"],
+    }),
+    getOrder: builder.query({
+      query: () => ({
+        url: `/order/getOrders`,
+        method: "GET",
+      }),
+      providesTags: ["order"],
     }),
 
     updateOrder: builder.mutation({
@@ -26,41 +35,30 @@ const orderApi = baseApi.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["book"],
+      invalidatesTags: ["order"],
+    }),
+
+    getSingleOrder: builder.query({
+      query: (order_id) => ({
+        url: `/order/getorder/${order_id}`,
+        method: "GET",
+      }),
+      providesTags: ["order"],
     }),
     deleteOrder: builder.mutation({
       query: (id) => ({
         url: `/order/delete-order/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["book"],
+      invalidatesTags: ["order"],
     }),
-    // getAllUser: builder.query({
-    //   query: (args) => {
-    //     const params = new URLSearchParams();
-    //     if (args) {
-    //       args.forEach((item: TqueryParams) => {
-    //         params.append(item.name, item.value as string);
-    //       });
-    //     }
-    //     return {
-    //       url: "/admin//get-users",
-    //       method: "GET",
-    //       params: params,
-    //     };
-    //   },
-    //   providesTags: ["users"],
-
-    //   transformResponse: (response: TResponseRedux<any>) => ({
-    //     data: response?.data,
-    //     meta: response?.meta,
-    //   }),
-    // }),
   }),
 });
 export const {
   useAddOrderMutation,
   useVerifyOrderQuery,
+  useGetOrderQuery,
+  useGetSingleOrderQuery,
   useDeleteOrderMutation,
   useUpdateOrderMutation,
 } = orderApi;

@@ -14,6 +14,7 @@ import About from "@/pages/about/About";
 import UsersData from "@/pages/users/UsersData";
 import Order from "@/pages/order/Order";
 import VerifyOrder from "@/pages/order/VerifyOrder";
+import OrdersData from "@/pages/order/OrdersData";
 
 const router = createBrowserRouter([
   {
@@ -41,10 +42,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/order-verify",
+        path: "order-verify",
         element: (
           <ProtectedRoutes role="user">
             <VerifyOrder></VerifyOrder>
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "get-orders/:order_id",
+        element: (
+          <ProtectedRoutes role="user">
+            <OrdersData></OrdersData>
           </ProtectedRoutes>
         ),
       },

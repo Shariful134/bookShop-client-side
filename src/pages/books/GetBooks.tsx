@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useGetAllBooksQuery } from "../../redux/book/bookApi";
 import { TBook, TUser } from "../../types/type";
 import { IoMdCart } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBook } from "react-icons/fa";
 import { useAppSelector } from "@/redux/hooks";
 import { useCurrentToken } from "@/redux/auth/authSlice";
@@ -15,6 +15,7 @@ import InStockSelect from "@/components/select/InStockSelect";
 import BookDelete from "@/components/modal/BookDelete";
 
 const GetBooks = () => {
+  const navigate = useNavigate();
   const token = useAppSelector(useCurrentToken);
   let user;
   if (token) {
@@ -70,6 +71,12 @@ const GetBooks = () => {
     );
   });
 
+  const handleBuy = () => {
+    if (!token) {
+      navigate("/login");
+    }
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="pt-10 bg-[#d9cbb7]">
       <div className=" text-center font-serif  px-10 pt-8">
@@ -88,7 +95,7 @@ const GetBooks = () => {
         className=" mt-5 flex justify-center flex-wrap lg:gap-4 sm:gap-2 md:gap-4 px-10"
       >
         <Input
-          className="w-75 "
+          className="w-75 border-gray-500"
           type="search"
           value={searchTerm}
           placeholder="Search here"
@@ -147,7 +154,10 @@ const GetBooks = () => {
                         </button>
                       </Link>
                       <Link to={`/book-order/${book._id}`}>
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button
+                          onClick={handleBuy}
+                          className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                        >
                           Buy Now
                         </button>
                       </Link>

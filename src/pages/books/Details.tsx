@@ -88,7 +88,7 @@ const Details = () => {
                 Home
               </button>
             </Link>
-            <Link to={`/book-order/${book._id}`}>
+            <Link to={`/book-order/${book?._id}`}>
               <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
                 Buy Now
               </button>
