@@ -1,5 +1,4 @@
 import SelectForm from "@/components/form/SelectForm";
-import UserDeleteModal from "@/components/modal/UserDeleteModal";
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -16,6 +15,7 @@ import { FaBook } from "react-icons/fa";
 import { TAllOrder, TOrder } from "./AllOrder.type";
 
 import { SkeletonDemo } from "@/components/skeleton/SkeletonDemo";
+import OrderDelete from "@/components/modal/OrderDelete";
 
 const AllOrder = () => {
   const { data: allData, isLoading } = useGetAllOrderQuery(undefined);
@@ -123,7 +123,7 @@ const AllOrder = () => {
                         <TableCell>{order.totalAmount} BDT</TableCell>
                         <TableCell>{order.quantity}</TableCell>
                         <TableCell className="flex flex-wrap  gap-2">
-                          <UserDeleteModal id={order._id}></UserDeleteModal>
+                          <OrderDelete id={order._id}></OrderDelete>
                         </TableCell>
                       </TableRow>
                     ))
