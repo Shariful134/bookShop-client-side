@@ -5,15 +5,33 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../redux/auth/authApi";
 import { TResponse } from "../types/type";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const Registration = () => {
   const navigate = useNavigate();
   const [addRegisterUser] = useRegisterUserMutation();
 
+  const [passwordError, setPasswordError] = useState("");
+
+  const validatePassword = (password: string) => {
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!regex.test(password)) {
+      setPasswordError(
+        "Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, %, etc.)."
+      );
+      return false;
+    }
+    setPasswordError("");
+    return true;
+  };
+
   const handleRegister = async (e: FieldValues) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+
+    if (!validatePassword(data?.password as string)) return;
 
     try {
       const res = (await addRegisterUser(data)) as TResponse<any>;
@@ -30,7 +48,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen font-serif">
+    <div className="hero min-h-screen bg-[#fafafa] font-[inter]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Registeration now!</h1>
@@ -40,7 +58,7 @@ const Registration = () => {
             a id nisi.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card  w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <fieldset className="fieldset font-[inter]">
               <form onSubmit={handleRegister}>
@@ -48,27 +66,30 @@ const Registration = () => {
                 <input
                   type="text"
                   name="name"
-                  className="input"
+                  className="input border-1 border-gray-300"
                   placeholder="Nmae"
                 />
                 <label className="fieldset-label">Email</label>
                 <input
                   type="email"
                   name="email"
-                  className="input"
+                  className="input border-1 border-gray-300"
                   placeholder="Email"
                 />
                 <label className="fieldset-label">Password</label>
                 <input
                   type="password"
                   name="password"
-                  className="input"
+                  className="input border-1 border-gray-300"
                   placeholder="Password"
                 />
+                {passwordError && (
+                  <p className="text-red-600">{passwordError}</p>
+                )}
 
                 <button
                   type="submit"
-                  className="btn  btn-neutral mt-4 hover:bg-gray-900"
+                  className="btn mt-2 border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
                 >
                   Register
                 </button>

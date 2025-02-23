@@ -3,7 +3,7 @@ import mission from "../../assets/image/About/Misson.png";
 const Mission = () => {
   return (
     <div className="px-10">
-      <div className="font-serif">
+      <div className="font-[inter">
         <h2 className="text-4xl text-center text-cyan-500 pt-5 pb-12">
           Our Mission & Vision?
         </h2>

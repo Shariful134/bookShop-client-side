@@ -29,7 +29,7 @@ const NavBar = () => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className="navbar bg-gray-100 shadow-sm px-10 font-serif fixed z-1 ">
+    <div className="navbar bg-gray-300 shadow-sm px-10 font-serif fixed z-1 ">
       <div className="flex-1">
         <img className=" w-[13%]" src={logoImage} alt="" />
       </div>

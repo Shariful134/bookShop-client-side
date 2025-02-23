@@ -13,7 +13,7 @@ const VerifyOrder = () => {
   const order_id = orderData?.order_id;
 
   return (
-    <div className="pt-20 text-4xl px-10 bg-[#e9e4dd]">
+    <div className="pt-20 text-4xl px-10 bg-[#fafafa]">
       {isLoading ? (
         <SkeletonDemo></SkeletonDemo>
       ) : (
@@ -85,13 +85,13 @@ const VerifyOrder = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             <Link to={`/get-orders/${order_id}`}>
-              <button className="btn mb-5 border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn mb-5 border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 View Order
               </button>
             </Link>
 
             <Link to="/">
-              <button className="btn mb-5 border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn mb-5 border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Home
               </button>
             </Link>

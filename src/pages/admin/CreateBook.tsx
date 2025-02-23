@@ -70,18 +70,16 @@ const CreateBook = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "The Power of Habit",
-      author: "Charles Duhigg",
+      title: "",
+      author: "",
       price: 15.99,
-      category: "SelfDevelopment",
-      description:
-        "Atomic Habits is a powerful book that explores the science of habit formation and how small changeshabits, and the impact of environment on personal growth. It includes real-life examples,psychological principles, and actionable techniques",
+      category: "",
+      description: "",
       quantity: 36,
       inStock: "",
       publicationDate: "",
-      publisher: "Random House",
-      imageURL:
-        "https://i.ibb.co.com/VcKNJg9d/DALL-E-2025-02-16-00-52-37-A-high-quality-programming-book-with-a-visually-appealing-front-cover-The.webp",
+      publisher: "",
+      imageURL: "",
     },
   });
 
@@ -106,7 +104,7 @@ const CreateBook = () => {
   };
 
   return (
-    <div className="pt-16 px-10 bg-[#d9cbb7]">
+    <div className="pt-16 px-10 bg-[#fafafa]">
       <div className=" text-center font-[inter] pt-8 pb-5 ">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Create{" "}
@@ -302,7 +300,7 @@ const CreateBook = () => {
           <div className="text-center pb-5">
             {" "}
             <Button
-              className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 text-black"
+              className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200 text-black"
               type="submit"
             >
               Submit

@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen px-10">
+    <div className="hero  min-h-screen px-10 bg-[#fafafa] font-[inter]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left font-[inter]">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -48,7 +48,7 @@ const Login = () => {
             a id nisi.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card  w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <fieldset className="fieldset font-[inter]">
               <form onSubmit={handleLogin}>
@@ -68,7 +68,7 @@ const Login = () => {
                 />
                 <button
                   type="submit"
-                  className="btn hover:bg-gray-900 btn-neutral mt-4"
+                  className="btn mt-2 border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200mt-4"
                 >
                   Login
                 </button>

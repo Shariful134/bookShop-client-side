@@ -1,10 +1,18 @@
 import { FaBook } from "react-icons/fa";
 import bannerImg from "../../assets/image/caroselImg-1.png";
 import Books from "@/components/books/Books";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const Home = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
+
   return (
-    <div className="pt-16 bg-[#d9cbb7]">
+    <div className="pt-16 bg-[#fafafa]">
       <div className="relative ">
         <img className=" h-96 w-full  " src={bannerImg} alt="" />
         <div className="max-w-93 absolute top-20 left-8 bg-red-100/45 font-[inter] p-4 rounded-lg">
@@ -13,7 +21,7 @@ const Home = () => {
             Discover a vast collection of books from every genre. Whether you
             love fiction,
           </p>
-          <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200 sm:btn-sm md:btn-md mt-2 bg ">
+          <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gay-100 hover:bg-gray-200 sm:btn-sm md:btn-md mt-2 bg ">
             Buy Now
           </button>
         </div>

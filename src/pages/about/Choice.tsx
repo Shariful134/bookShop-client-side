@@ -3,11 +3,10 @@ import image1 from "../../assets/image/About/8e57tn0b.png";
 import image2 from "../../assets/image/About/do8zts1g.png";
 import image3 from "../../assets/image/About/emlo3u4o.png";
 import image4 from "../../assets/image/About/j90o418b.png";
-// import image5 from "../../assets/image/About/zlfld5ql.png";
 
 const Choice = () => {
   return (
-    <div className="font-serif px-10">
+    <div className="font-[inter] px-10">
       <div>
         <div>
           <h2 className="text-4xl text-center pt-5 pb-2 text-cyan-500">
@@ -33,7 +32,7 @@ const Choice = () => {
               rare literary treasures, ensuring something
             </p>
             <Link to="/get-books">
-              <button className=" btn border-1 rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className=" btn border-1 rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Books
               </button>
             </Link>
@@ -50,7 +49,7 @@ const Choice = () => {
               accessible and enjoyable without breaking the bank.
             </p>
             <Link to="/get-books">
-              <button className=" btn border-1 rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className=" btn border-1 rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Books
               </button>
             </Link>
@@ -67,7 +66,7 @@ const Choice = () => {
               our fast, reliable, and secure delivery service.
             </p>
             <Link to="/get-books">
-              <button className=" btn border-1 rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className=" btn border-1 rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Books
               </button>
             </Link>
@@ -84,7 +83,7 @@ const Choice = () => {
               rare literary treasures, ensuring something
             </p>
             <Link to="/get-books">
-              <button className=" btn border-1 rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className=" btn border-1 rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Books
               </button>
             </Link>

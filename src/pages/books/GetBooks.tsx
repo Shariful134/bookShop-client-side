@@ -78,7 +78,7 @@ const GetBooks = () => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className="pt-10 bg-[#d9cbb7]">
+    <div className="pt-10 bg-[#fafafa]">
       <div className=" text-center font-[inter]  px-10 pt-8">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Our Books{" "}
@@ -112,7 +112,7 @@ const GetBooks = () => {
         <PriceSelect setPricesSelect={setPricesSelect}></PriceSelect>
         <InStockSelect setInStockSelect={setInStockSelect}></InStockSelect>
       </div>
-      <div className="flex justify-center flex-wrap gap-4 px-10 py-2 bg-[#d9cbb7]">
+      <div className="flex justify-center flex-wrap gap-4 px-10 py-2 bg-[#fafafa]">
         {allFilteredBooks.length > 0 ? (
           allFilteredBooks?.map((book: TBook) => {
             const inStock = book.inStock;
@@ -135,12 +135,12 @@ const GetBooks = () => {
                   {admin === "admin" ? (
                     <div className=" flex flex-wrap justify-center gap-2">
                       <Link to={`/book-details/${book._id}`}>
-                        <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Details
                         </button>
                       </Link>
                       <Link to={`/book-update/${book._id}`}>
-                        <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Update
                         </button>
                       </Link>
@@ -149,14 +149,14 @@ const GetBooks = () => {
                   ) : (
                     <div className="flex flex-wrap justify-center gap-2">
                       <Link to={`/book-details/${book._id}`}>
-                        <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Details
                         </button>
                       </Link>
                       <Link to={`/book-order/${book._id}`}>
                         <button
                           onClick={handleBuy}
-                          className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                          className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
                         >
                           Buy Now
                         </button>
@@ -165,7 +165,7 @@ const GetBooks = () => {
                   )}
                 </div>
                 <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
-                  <button className="btn border-1 w-full font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                  <button className="btn border-1 w-full font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                     Add To Cart <IoMdCart className="text-xl" />
                   </button>
                 </div>

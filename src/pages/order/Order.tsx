@@ -78,7 +78,7 @@ const Order = () => {
   };
 
   return (
-    <div className="bg-[#d9cbb7] pt-18 px-10 flex gap-2 flex-wrap justify-center pb-5">
+    <div className="bg-[#fafafa] pt-18 px-10 flex gap-2 flex-wrap justify-center pb-5">
       <div className="card mt-5  w-full max-w-sm shrink-0 shadow-2xl ">
         <div className="card-body font-[inter]">
           <div className="flex justify-between items-end">
@@ -123,14 +123,14 @@ const Order = () => {
                 name="name"
                 type="text"
                 required={true}
-                className="input"
+                className="input border-1 border-gray-300"
                 placeholder="Name"
               />
               <label className="fieldset-label ">Email</label>
               <input
                 name="email"
                 type="email"
-                className="input"
+                className="input border-1 border-gray-300"
                 required={true}
                 defaultValue={user?.userEmail}
                 placeholder="Email"
@@ -140,7 +140,7 @@ const Order = () => {
                 name="address"
                 type="text"
                 required={true}
-                className="input "
+                className="input border-1 border-gray-300 "
                 placeholder="Address"
               />
               <label className="fieldset-label">Phone</label>
@@ -148,12 +148,12 @@ const Order = () => {
                 name="phone"
                 type="number"
                 required={true}
-                className="input "
+                className="input border-1 border-gray-300 "
                 placeholder="Number"
               />
               <button
                 type="submit"
-                className="btn  border-1 mt-5 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn  border-1 mt-5 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
               >
                 Order Now
               </button>
@@ -196,7 +196,7 @@ const Order = () => {
           <div className="card-actions justify-start font-[inter]">
             <Link to="/">
               <Button
-                className="btn border-1 mt-5  rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn border-1 mt-5  rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
                 variant="outline"
               >
                 Home

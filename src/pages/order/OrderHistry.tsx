@@ -70,8 +70,8 @@ const OrdersData = () => {
     0
   );
   return (
-    <div className="px-10 pt-18 bg-[#e9e4dd]">
-      <h2 className="text-2xl text-center py-5 font-[poppins]">
+    <div className="px-10 pt-18 bg-[#fafafa]">
+      <h2 className="text-2xl text-center py-5 font-[inter]">
         {" "}
         Your All Orders
       </h2>

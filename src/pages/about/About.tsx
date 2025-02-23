@@ -4,7 +4,7 @@ import Mission from "./Mission";
 
 const About = () => {
   return (
-    <div className="bg-[#D9CBB7]">
+    <div className="bg-[#fafafa]">
       <Banner></Banner>
       <Choice></Choice>
       <Mission></Mission>

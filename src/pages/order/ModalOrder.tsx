@@ -74,7 +74,7 @@ const ModalOrder = ({ id }: { id: string }) => {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+          className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
           variant="outline"
         >
           Order Confirm
@@ -113,7 +113,7 @@ const ModalOrder = ({ id }: { id: string }) => {
             <div className="grid grid-cols-3 items-center gap-4">
               <Button
                 onClick={hanldeOrder}
-                className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+                className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
                 variant="outline"
               >
                 Order Now

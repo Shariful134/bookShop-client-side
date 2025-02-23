@@ -37,7 +37,7 @@ const Details = () => {
   }, [location]);
 
   return (
-    <div className="pt-10 px-10 bg-[#d9cbb7]">
+    <div className="pt-10 px-10 bg-[#fafafa]">
       <div className=" text-center pt-8 font-[inter]">
         <h2 className="text-3xl mb-2 text-cyan-500">
           -- <FaBook className="inline" /> Book Details{" "}
@@ -81,27 +81,27 @@ const Details = () => {
           </p>
           {admin == "admin" ? (
             <div className="card-actions justify-start">
-              <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Add To Cart <IoMdCart className="text-xl" />
               </button>
               <Link to="/">
-                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                   Home
                 </button>
               </Link>
             </div>
           ) : (
             <div className="card-actions justify-start">
-              <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+              <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                 Add To Cart <IoMdCart className="text-xl" />
               </button>
               <Link to="/">
-                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                   Home
                 </button>
               </Link>
               <Link to={`/book-order/${book?._id}`}>
-                <button className="btn border-1 font-[inter] rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                <button className="btn border-1 font-[inter] rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                   Buy Now
                 </button>
               </Link>
@@ -120,7 +120,7 @@ const Details = () => {
           category that you may love!
         </p>
       </div>
-      <div className="flex justify-center flex-wrap gap-4 pb-5 font-serif bg-[#d9cbb7]">
+      <div className="flex justify-center flex-wrap gap-4 pb-5 font-serif bg-[#fafafa]">
         {sameCategory?.map((sameBook: TBook) => {
           const inStock = sameBook.inStock;
           return (
@@ -151,18 +151,18 @@ const Details = () => {
                   {admin == "admin" ? (
                     <div className="flex  flex-wrap justify-center gap-2">
                       <Link to={`/book-details/${sameBook?._id}`}>
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Details
                         </button>
                       </Link>
                       <Link to={`/book-update/${sameBook?._id}`}>
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Update
                         </button>
                       </Link>
                       <BookDelete id={sameBook?._id}></BookDelete>
                       <Link to="/">
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Home
                         </button>
                       </Link>
@@ -170,17 +170,17 @@ const Details = () => {
                   ) : (
                     <div className="flex gap-2 flex-wrap justify-center">
                       <Link to={`/book-details/${sameBook?._id}`}>
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Details
                         </button>
                       </Link>
                       <Link to="/">
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Home
                         </button>
                       </Link>
                       <Link to={`/book-order/${book._id}`}>
-                        <button className="btn border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                        <button className="btn border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                           Buy Now
                         </button>
                       </Link>
@@ -189,7 +189,7 @@ const Details = () => {
                 </div>
               </div>
               <div className="absolute top-[50%] invisible group-hover:visible  left-0 w-full">
-                <button className="btn w-full border-1 font-serif rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200">
+                <button className="btn w-full border-1 font-serif rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200">
                   Add To Cart <IoMdCart className="text-xl" />
                 </button>
               </div>
