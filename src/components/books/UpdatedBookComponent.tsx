@@ -92,7 +92,7 @@ const UpdatedBookComponent = () => {
     }
   };
   return (
-    <div className="pt-16 px-10 bg-[#d9cbb7]">
+    <div className="pt-16 px-10 bg-[#fafafa]">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -277,7 +277,7 @@ const UpdatedBookComponent = () => {
           <div className="text-center mb-2">
             {" "}
             <Button
-              className="btn border-1 font-[inter] text-black rounded-full border-gray-600 bg-amber-100 hover:bg-amber-200"
+              className="btn border-1 font-[inter] text-black rounded-md border-gray-600 bg-gray-100 hover:bg-gray-200"
               type="submit"
             >
               Submit

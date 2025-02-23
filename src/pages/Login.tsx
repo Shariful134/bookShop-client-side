@@ -56,14 +56,14 @@ const Login = () => {
                 <input
                   name="email"
                   type="email"
-                  className="input"
+                  className="input border-1 border-gray-300"
                   placeholder="Email"
                 />
                 <label className="fieldset-label">Password</label>
                 <input
                   name="password"
                   type="password"
-                  className="input"
+                  className="input border-1 border-gray-300"
                   placeholder="Password"
                 />
                 <button
